@@ -1,0 +1,64 @@
+import java.util.Random;
+
+public class Rutinas {
+	static String [] NomH={"Juan","Oscar","Miguel","Antonio","Lauro",
+			"Eleodoro","Alberto","Jose"};
+	static String [] NomM={"Maria","Guadalupe","Artemisa","Lorenia","Paola","Luisa",
+			"Perla","Loreta"};
+	static String [] Ap={"Garcia","Lopez","Perez","Rubio","Salazar","Hernandez"};
+	
+	static String [] Colores = {"Rojo","Azul","Amarillo","Verde","Cafe","Negro","Rosa","Lila","Dorado","Plata","Blanco","Gris","Naranja","Crema","Celeste","Morado"};
+	
+	public static String nextNombre(int Cuantos, int Genero) {
+    	// Genero 1=masculino 2=femenino, Cuantos cantidad de nombre primario
+	    String Nom="",NomTra="";
+    	int Pos;
+    	Random R=new Random();
+    	for(int i=0 ; i<Cuantos ; i++) {
+    		if (Genero==1){
+    			Pos=R.nextInt(NomH.length);
+    			NomTra=NomH[Pos];
+    			
+    		} else {
+    			Pos=R.nextInt(NomM.length);
+    			NomTra=NomM[Pos];
+    		}
+    		if(Nom.indexOf(NomTra)>=0) {
+    			i--;
+    			continue;
+    		}
+    		Nom=Nom+" "+NomTra;
+    	}
+    	Nom+=" "+Ap[R.nextInt(Ap.length)]+" "+Ap[R.nextInt(Ap.length)];
+    	return Nom;
+    }
+	
+	public static String nextColor() {
+		String Color;
+		Random R = new Random();
+		int Pos = R.nextInt(Colores.length);
+		Color = Colores[Pos];
+		return Color;
+	}
+	   
+	static public int nextInt(int Valor) {
+		return new Random().nextInt(Valor);   
+	}
+	   
+	static public int nextInt(int LimI, int LimS) {
+		return new Random().nextInt(LimS-LimI+1)+LimI;   
+	}
+	   
+	static public String PonBlancos(String Texto,int TamaÒo) {
+		while (Texto.length()<TamaÒo)  
+			Texto+=" ";
+		return Texto;
+	}
+	
+	static public String PonCeros(int Numero,int TamaÒo) {
+		String Texto=Numero+"";
+		while(Texto.length()<TamaÒo)
+		   Texto="0"+Texto;
+		return Texto;   
+	}
+}
